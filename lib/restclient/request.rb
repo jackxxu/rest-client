@@ -152,6 +152,7 @@ module RestClient
       err_msg = nil
       if (@verify_ssl == false) || (@verify_ssl == OpenSSL::SSL::VERIFY_NONE)
         net.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        net.ssl_version = :SSLv3
       elsif @verify_ssl.is_a? Integer
         net.verify_mode = @verify_ssl
         net.verify_callback = lambda do |preverify_ok, ssl_context|
